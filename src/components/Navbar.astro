@@ -1,0 +1,142 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section>
+    <div
+        id="menu"
+        class="group flex fixed left-0 duration-500 z-50
+               bottom-0 w-full border-t translate-y-full
+               lg:top-1/2 lg:bottom-auto lg:w-auto border lg:-translate-y-1/2 translate-y-0"
+    >
+        <div
+            id="menuContainer"
+            class="flex w-full px-2 py-3 justify-around overflow-auto
+                   lg:flex-col lg:w-fit lg:justify-between lg:gap-2"
+        >
+        <div id="menuBg"></div>
+            <a href="#boxPres" class="flex items-center cursor-pointer">
+                <div class="flex items-center justify-center min-w-[2.5rem]">
+                    <Icon name="line-md:account" class="w-5 h-6 text-center" />
+                </div>
+                <p
+                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                >
+                    Sobre mi
+                </p>
+            </a>
+
+            <a href="#skills" class="flex items-center cursor-pointer">
+                <div class="flex items-center justify-center min-w-[2.5rem]">
+                    <Icon
+                        name="line-md:lightbulb-filled"
+                        class="w-5 h-6 text-center"
+                    />
+                </div>
+                <p
+                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                >
+                    Habilidades
+                </p>
+            </a>
+
+            <a href="#projects" class="flex items-center cursor-pointer">
+                <div class="flex items-center justify-center min-w-[2.5rem]">
+                    <Icon
+                        name="line-md:briefcase-check-filled"
+                        class="w-5 h-6 text-center"
+                    />
+                </div>
+                <p
+                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                >
+                    Mis proyectos
+                </p>
+            </a>
+
+            <a href="#contact" class="flex items-center cursor-pointer">
+                <div class="flex items-center justify-center min-w-[2.5rem]">
+                    <Icon name="line-md:email" class="w-5 h-6 text-center" />
+                </div>
+                <p
+                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                >
+                    Contacto
+                </p>
+            </a>
+
+            <div id="mode" class="flex items-center cursor-pointer">
+                <div class="flex items-center justify-center min-w-[2.5rem]">
+                    <Icon
+                        name="line-md:light-dark"
+                        class="w-5 h-6 text-center"
+                    />
+                </div>
+                <p
+                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                >
+                    Modo oscuro
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modeBtn = document.querySelector("#mode");
+
+        let actualMode: string = document.documentElement.classList.contains(
+            "dark",
+        )
+            ? "dark"
+            : "light";
+
+        const applyTheme = (theme: string) => {
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+                document.body.classList.remove("master-white");
+                document.body.classList.add("master-black");
+            } else {
+                document.documentElement.classList.remove("dark");
+                document.body.classList.remove("master-black");
+                document.body.classList.add("master-white");
+            }
+            localStorage.setItem("theme", theme);
+            actualMode = theme;
+        };
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", (event) => {
+                if (!localStorage.getItem("theme")) {
+                    const newTheme = event.matches ? "dark" : "light";
+                    applyTheme(newTheme);
+                }
+            });
+
+        if (!modeBtn) return;
+
+        modeBtn.addEventListener("click", () => {
+            const nextTheme = actualMode === "dark" ? "light" : "dark";
+            applyTheme(nextTheme);
+        });
+
+        const wNab = document.querySelectorAll<HTMLParagraphElement>("#menuContainer p");
+        let widthMax: number = 0;
+
+        wNab.forEach((w) => {
+            const wElement = w.clientWidth;
+
+            if (widthMax < wElement) {
+                widthMax = wElement + 8;
+            }
+        });
+
+        wNab.forEach((w) => {
+            w.classList.add("w-0", "lg:transition-all", "lg:duration-300");
+
+            w.style.setProperty("--max-width", `${widthMax}px`);
+        });
+    });
+</script>

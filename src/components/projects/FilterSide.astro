@@ -1,0 +1,102 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    listSkills: Array<{
+        category: string;
+        skills: Array<{ name: string }>;
+    }>;
+}
+
+const { listSkills } = Astro.props;
+---
+
+<div
+    class="md:w-1/5 sticky bottom-0 md:bottom-auto md:relative z-10 boxSkills bg-(--bg) md:bg-transparent"
+>
+    <div
+        class="flex flex-col md:sticky bottom-0 md:top-4 md:bottom-auto md:overflow-y-auto pb-8 boxSkills"
+    >
+        <div
+            id="showFilters"
+            class="absolute md:hidden bottom-14 right-8 mt-10 rounded-full w-fit z-60 bg-(--text-primary) p-2 cursor-pointer"
+        >
+            <Icon name="lucide:filter" class="h-8 w-auto text-(--bg)" />
+        </div>
+
+        <div
+            id="tagsFilter"
+            class="flex-1 fixed md:static top-full duration-300 bg-(--bg) md:bg-transparent z-70 border-t md:border-none"
+        >
+            <Icon
+                id="hideFilters"
+                name="lucide:chevron-down"
+                class="h-10 w-auto justify-self-center md:hidden cursor-pointer"
+            />
+
+            <p class="font-bold mb-2">Filtrar por</p>
+
+            <div class="flex flex-col overflow-x-auto md:overflow-visible">
+                {
+                    listSkills.map((s) => (
+                        <div class="md:pb-[10%]">
+                            <p class="hidden md:block mb-2 text-sm text-neutral-500">
+                                {s.category}
+                            </p>
+                            <div class="flex flex-wrap">
+                                {s.skills
+                                    .sort((a, b) =>
+                                        a.name.localeCompare(b.name),
+                                    )
+                                    .map((l) => (
+                                        <a
+                                            class="cursor-pointer m-1 relative opacity-40 rounded-full border px-[6px] duration-400 text-sm"
+                                            data-category={l.name}
+                                            href="#projectSection"
+                                        >
+                                            {l.name}
+                                        </a>
+                                    ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="flex flex-row md:flex-col justify-around mt-4 md:mt-6">
+                <div id="typeFilter" class="flex flex-col">
+                    <p class="mb-3 text-xs font-semibold">
+                        Tipo de coincidencia
+                    </p>
+                    <div class="flex md:mb-4">
+                        <a
+                            id="softFilter"
+                            data-typefilter="softFilter"
+                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-l-full h-full text-sm py-1"
+                        >
+                            <p>Parcial</p>
+                        </a>
+                        <a
+                            id="hardFilter"
+                            data-typefilter="hardFilter"
+                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-r-full h-full text-sm py-1"
+                        >
+                            <p>Total</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a
+                    id="clearfilters"
+                    class="flex self-end md:self-start md:mt-auto flex-shrink-0 opacity-0 duration-1000 px-[6px] cursor-pointer text-sm items-center text-red-500"
+                >
+                    <Icon
+                        name="lucide:filter-x"
+                        class="h-5 md:me-1 w-auto self-center ms-1"
+                    />
+                    <p class="block">Borrar filtros</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,9 +9,21 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "git": "git add . && git commit -m `especial` && git push origin main"
   },
   "dependencies": {
-    "astro": "^6.1.1"
+    "@astrojs/react": "^5.0.7",
+    "@iconify-json/lucide": "^1.2.111",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.4.4",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@iconify-json/devicon-plain": "^1.2.57",
+    "@iconify-json/line-md": "^1.2.16",
+    "@iconify-json/simple-icons": "^1.2.84",
+    "@iconify-json/solar": "^1.2.5",
+    "astro-icon": "^1.1.5"
   }
 }

@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+import FormContact from "./forms/FormContact.astro";
+---
+
+<section id="contact" class="px-4 md:my-16 my-4">
+    <div class="mb-4">
+        <h2 class="font-bold text-current mb-2">Contacto</h2>
+        <p class="">
+            ¡Gracias por tu interés en mi trabajo! Si tienes alguna propuesta,
+            duda o simplemente quieres saludar, puedes encontrarme y escribirme
+            directamente a través de cualquiera de estos medios.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div class="space-y-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a
+                    href="https://linkedin.com/in/tu-usuario"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
+                >
+                    <Icon
+                        name="simple-icons:linkedin"
+                        class="h-6 w-6 text-[currentColor] md:group-hover:text-[#0077B5] transition-colors"
+                    />
+                    <span
+                        class="font-medium md:group-hover:text-white transition-colors"
+                        >LinkedIn</span
+                    >
+                </a>
+
+                <a
+                    href="https://github.com/tu-usuario"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
+                >
+                    <Icon
+                        name="simple-icons:github"
+                        class="h-6 w-6 text-[currentColor] md:group-hover:text-white transition-colors"
+                    />
+                    <span
+                        class="font-medium md:group-hover:text-white transition-colors"
+                        >GitHub</span
+                    >
+                </a>
+
+                <a
+                    href="mailto:tu-correo@email.com"
+                    class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
+                >
+                    <Icon
+                        name="lucide:mail"
+                        class="h-6 w-6 text-[currentColor] md:group-hover:text-blue-400 transition-colors"
+                    />
+                    <span
+                        class="font-medium md:group-hover:text-white transition-colors"
+                        >Mail</span
+                    >
+                </a>
+
+                <a
+                    href="https://wa.me/tu-numero-aqui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
+                >
+                    <Icon
+                        name="simple-icons:whatsapp"
+                        class="h-6 w-6 text-[currentColor] md:group-hover:text-[#25D366] transition-colors"
+                    />
+                    <span
+                        class="font-medium md:group-hover:text-white transition-colors"
+                        >WhatsApp</span
+                    >
+                </a>
+
+                <a
+                    href="https://goo.gl/maps/tu-enlace-de-google-maps"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group sm:col-span-2"
+                >
+                    <Icon
+                        name="lucide:map-pin"
+                        class="h-6 w-6 text-[currentColor] md:group-hover:text-red-400 transition-colors"
+                    />
+                    <span
+                        class="font-medium md:group-hover:text-white transition-colors"
+                        >Comunidad Valenciana, España</span
+                    >
+                </a>
+            </div>
+        </div>
+
+        <FormContact />
+    </div>
+</section>

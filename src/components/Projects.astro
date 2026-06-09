@@ -1,0 +1,97 @@
+---
+import FilterSide from "./projects/FilterSide.astro";
+import ProjectsGroup from "./projects/ProjectsGroup.astro";
+import ResultsSearch from "./projects/ResultsSearch.astro";
+import { projects } from "@/helpers/projects";
+import { listSkills } from "@/helpers/skills";
+import { allSkillsFlat, typesConTechsIguales } from "@/scripts/features/projectsData";
+
+export type objTechs = {
+    name: string;
+    important: boolean;
+};
+
+---
+
+<section id="projects" class="md:my-16 my-4">
+    <h2 class="my-8">Mis proyectos</h2>
+
+    <div
+        id="projectSection"
+        class="w-full flex flex-col-reverse relative md:static md:flex-row"
+    >
+
+        <FilterSide listSkills={listSkills} />
+
+        <div
+            class="flex flex-col-reverse md:flex-row flex-col w-full justify-self-center relative md:static"
+        >
+            <div
+                class="hidden md:block min-w-[2px] mx-3 bg-radial-[at_50%_50%] from-sky-200 from-10% to-[var(--bg)] to-90%"
+            >
+            </div>
+
+            <div class="w-full">
+                <div
+                    class="flex flex-col w-full justify-self-center gap-y-8"
+                    data-highligts
+                >
+                    {
+                        projects.map((project) => (
+                            <ProjectsGroup
+                                project={project}
+                                typesConTechsIguales={typesConTechsIguales}
+                                allSkillsFlat={allSkillsFlat}
+                            />
+                        ))
+                    }
+
+                    <ResultsSearch
+                        projects={projects}
+                        allSkillsFlat={allSkillsFlat}
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { filterPanel } from "@/scripts/features/filterPanel";
+    import { highlights } from "@/scripts/features/hLights";
+    import { projectFilter } from "@/scripts/features/projectFilter";
+    import { getNodes } from "@/scripts/nodes";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const nodes = getNodes();
+
+        filterPanel(nodes.showFilters, nodes.hideFilters, nodes.tagsFilter);
+
+        highlights(nodes.triggers);
+
+        projectFilter({
+            typeFilter: nodes.typeFilter,
+            techOptions: nodes.techOptions,
+            allProjects: nodes.allProjects,
+            sections: nodes.sections,
+            buttonClear: nodes.buttonClear,
+            resultsSection: nodes.resultsSection,
+            nextTime: nodes.nextTime,
+        });
+    });
+</script>
+
+<style>
+    .boxSkills {
+        scrollbar-color: #ffffff10 #ffffff00;
+        scrollbar-width: thin;
+    }
+
+    .boxSkills:hover {
+        background: #ffffff20 #ffffff00;
+    }
+
+    .widthAccordeon {
+        width: 100%;
+    }
+</style>

@@ -1,0 +1,348 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
+
+type techsType = {
+    name: string;
+    important: boolean;
+};
+
+type allSkillsType = {
+    name: string;
+    repo: string;
+    url: string;
+};
+
+const { data, index, allSkillsFlat, type } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/images/projects/*.webp",
+    { eager: true },
+);
+
+const imagePath = `/src/assets/images/projects/${data.img}.webp`;
+const projectImage = images[imagePath]?.default;
+
+const flatTechs = data.techs.map((x: Record<string, string>) => x.name);
+
+const sortedTechs = data.techs.sort(
+    (a: techsType, b: techsType) => +b.important - +a.important,
+);
+
+const visibleTechs = sortedTechs.slice(0, 5);
+const restTechs = sortedTechs.slice(5);
+---
+
+{
+    type ? (
+        <div
+            class={`flex flex-col duration-400 isFilter h-full`}
+            id={data.img}
+            data-index={index}
+            data-show={flatTechs}
+            data-cat={type}
+        >
+            <div class="overflow-hidden m-2 border-2 rounded-[16px] h-full duration-400 group/info bordercardmini relative">
+                <div class="flex h-full rounded-lg">
+                    <div class="rounded-[12px] overflow-hidden content-center duration-400 bordercolmini">
+                        <Image
+                            src={projectImage}
+                            alt={`Captura del sitio de ${data.name}`}
+                            class={`w-auto h-full md:group-hover/card:scale-103 duration-600`}
+                        />
+                    </div>
+                </div>
+                <a
+                    href={data.link}
+                    target="_blank"
+                    class="goLink pointer-events-none md:pointer-events-auto"
+                >
+                    <div class="md:group-hover/info:opacity-80 bg-(--bg) opacity-0 absolute inset-0 duration-400 content-center text-center">
+                        <p class="px-2">Ir al sitio web</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    ) : (
+        <div
+            class={`flex flex-col duration-400 w-full isFilter h-fit`}
+            id={data.img}
+            data-index={index}
+            data-show={flatTechs}
+        >
+            <div class="my-2 border-2 rounded-[16px] h-full duration-400 group/card bordercard">
+                <a
+                    class="flex h-fit rounded-lg"
+                    href={data.link}
+                    target="_blank"
+                >
+                    <div class="rounded-t-[12px] overflow-hidden h-2/3 content-center border-b duration-400 bordercol">
+                        <Image
+                            src={projectImage}
+                            alt={`Captura del sitio de ${data.name}`}
+                            class={`w-full h-auto md:group-hover/card:scale-103 duration-600`}
+                        />
+                    </div>
+                </a>
+
+                <div
+                    class="flex flex-col h-fit px-2 pb-2 relative"
+                    data-indexImg={index}
+                >
+                    <a
+                        class="flex h-fit w-fit px-1 py-1 rounded-lg pt-2"
+                        href={data.link}
+                        target="_blank"
+                    >
+                        <div class="flex">
+                            <Icon
+                                name={data.icon}
+                                class="h-6 w-auto self-center me-2"
+                            />
+                            <p class="flex">
+                                {`${data.name}`}
+                                {!data.status && (
+                                    <p class="hidden md:flex mincard relative group/machine">
+                                        <Icon
+                                            name="lucide:info"
+                                            class="h-6 ms-2"
+                                        />
+                                        <span
+                                            class="absolute border z-99 opacity-0 transition-opacity duration-600 rounded-lg 
+                                            px-2 py-1 tooltip whitespace-nowrap  pointer-events-none
+                                            md:group-hover/machine:visible md:group-hover/machine:opacity-100"
+                                            data-tooltip
+                                        >
+                                            Accesible desde Web Machine
+                                        </span>
+                                    </p>
+                                )}
+                            </p>
+                        </div>
+                    </a>
+                    <div class="flex justify-between h-fit mincard">
+                        <div class="flex flex-wrap w-full mt-2">
+                            {visibleTechs.map((i: techsType) => {
+                                return (
+                                    <div
+                                        class="relative h-auto max-w-1/6 content-center text-center mx-1"
+                                        data-icontech={i.name}
+                                    >
+                                        <Icon
+                                            name={
+                                                allSkillsFlat.find(
+                                                    (p: allSkillsType) =>
+                                                        p.name === i.name,
+                                                )?.repo
+                                            }
+                                            class="h-6 w-auto"
+                                        />
+                                        <p
+                                            class="hidden absolute border z-50 opacity-0 transition-opacity duration-600 rounded-lg px-2 py-1 left-1/2 -translate-x-1/2 top-full tooltip"
+                                            data-tooltip
+                                        >
+                                            {i.name}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                            <div
+                                class="relative h-8 content-center text-center mx-1"
+                                data-plusicon
+                            >
+                                <Icon name="line-md:plus" class="h-6 w-auto" />
+                                <div
+                                    class="hidden absolute border z-50 opacity-0 transition-opacity duration-600 rounded-lg px-2 py-1 left-1/2 -translate-x-1/2 top-full tooltip whitespace-nowrap"
+                                    data-tooltip
+                                >
+                                    {restTechs.map((r: techsType) => {
+                                        return (
+                                            <div
+                                                class={`${r.name.replace(/\s+/g, "")}`}
+                                            >
+                                                <p class="textIcon text-start">
+                                                    {r.name}
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+<script>
+    const tooltipsIcons = (selector: string) => {
+        const icons = document.querySelectorAll(selector);
+
+        icons.forEach((t) => {
+            let openTimer: NodeJS.Timeout | null = null;
+            let closeTimer: NodeJS.Timeout | null = null;
+            let touchHideTimer: NodeJS.Timeout | null = null;
+
+            const getTooltip = () =>
+                t.querySelector("[data-tooltip]") as HTMLElement;
+
+            const showTooltip = () => {
+                const tooltips = getTooltip();
+                if (!tooltips) return;
+
+                if (closeTimer) clearTimeout(closeTimer);
+                if (touchHideTimer) clearTimeout(touchHideTimer);
+
+                tooltips.classList.remove("hidden");
+
+                const rect = tooltips.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.bottom > windowHeight) {
+                    tooltips.classList.add("bottom-full");
+                    tooltips.classList.remove("top-full");
+                } else {
+                    tooltips.classList.remove("bottom-full");
+                    tooltips.classList.add("top-full");
+                }
+
+                if (openTimer) clearTimeout(openTimer);
+                openTimer = setTimeout(() => {
+                    tooltips.classList.remove("opacity-0");
+                }, 20);
+            };
+
+            const hideTooltip = () => {
+                const tooltips = getTooltip();
+                if (!tooltips) return;
+
+                if (openTimer) clearTimeout(openTimer);
+
+                tooltips.classList.add("opacity-0");
+                tooltips.classList.remove("bottom-full");
+                tooltips.classList.add("top-full");
+
+                if (closeTimer) clearTimeout(closeTimer);
+                closeTimer = setTimeout(() => {
+                    tooltips.classList.add("hidden");
+                }, 600);
+            };
+
+            t.addEventListener("mouseenter", showTooltip);
+            t.addEventListener("mouseleave", hideTooltip);
+
+            t.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                showTooltip();
+            });
+
+            t.addEventListener("touchend", () => {
+                if (touchHideTimer) clearTimeout(touchHideTimer);
+                touchHideTimer = setTimeout(() => {
+                    hideTooltip();
+                }, 2000);
+            });
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        tooltipsIcons("[data-icontech]");
+        tooltipsIcons("[data-plusicon]");
+    });
+</script>
+
+<style>
+    .snhu .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #00244e 30%,
+            transparent 100%
+        );
+    }
+    .stleo .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #04341d 30%,
+            transparent 100%
+        );
+    }
+    .tiffin .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #b88f00 30%,
+            transparent 100%
+        );
+    }
+    .agm .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #da1f32 30%,
+            transparent 100%
+        );
+    }
+    .avenu .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #0a3370 30%,
+            transparent 100%
+        );
+    }
+    .avenuglobal .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #06213a 30%,
+            transparent 100%
+        );
+    }
+    .invitationYL .name {
+        background: radial-gradient(
+            ellipse 150% 75% at 100% 100%,
+            #7f07d450 35%,
+            transparent 100%
+        );
+    }
+</style>
+
+<style
+    is:global
+    set:html={`
+    ${allSkillsFlat
+        .map(
+            (s: Record<string, string>) => `
+        .${s.name.replace(/\s+/g, "")} .textIcon::before { 
+            content: "";
+            mask: url(${s.url}) no-repeat center;
+            -webkit-mask: url(${s.url}) no-repeat center;
+            background-color: currentColor; 
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: middle;
+        }
+        `,
+        )
+        .join("\n")}
+
+        #${data.img.replace(/\s+/g, "")} .bordercol,
+        #${data.img.replace(/\s+/g, "")} .bordercard { 
+            border-color: ${data.color}80
+        }
+
+        #${data.img.replace(/\s+/g, "")} .bordercardmini { 
+            border-color: ${data.color}50
+        }
+
+        #${data.img.replace(/\s+/g, "")}:hover .bordercol,
+        #${data.img.replace(/\s+/g, "")}:hover .bordercard,
+        #${data.img.replace(/\s+/g, "")} .tooltip { 
+            border-color: ${data.color}
+        }
+
+        #${data.img.replace(/\s+/g, "")}:hover .bordercard { 
+            box-shadow: 0px 0px 15px ${data.color}, 0px 0px 20px ${data.color}35;
+        }
+    `}
+></style>
