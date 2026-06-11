@@ -27,7 +27,7 @@ skills:
         repo: "simple-icons:javascript",
         url: "https://api.iconify.design/simple-icons/javascript.svg",
         order: 4,
-        fav: true
+        fav: false
      }
     - { 
         name: "Tailwind",
@@ -85,4 +85,11 @@ skills:
         order: 12,
         fav: false
      }
+    - { 
+        name: "React Native",
+        repo: "simple-icons:react",
+        url: "https://api.iconify.design/simple-icons/react.svg",
+        order: 13,
+        fav: false
+        }
 ---

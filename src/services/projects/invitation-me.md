@@ -1,10 +1,11 @@
 ---
 type: "invitation"
+date: "2025-05-01"
 category: "Invitaciones a eventos"
-icon: "solar:letter-outline"
+icon: "solar:letter-opened-linear"
 description: "Tarjetas de invitación a eventos"
 img: "invitationME"
-name: "Invitación"
+name: "Temática viajes"
 link: "https://ezeiac.github.io/memuquielTheFest/"
 status: true
 color: "#867e67"

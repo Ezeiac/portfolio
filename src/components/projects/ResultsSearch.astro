@@ -10,7 +10,7 @@ interface Props {
 const { projects, allSkillsFlat } = Astro.props;
 ---
 
-<div data-results-section class="w-full duration-400 hidden opacity-0">
+<div data-results-section class="w-full duration-400 is-hidden">
     <div id="titleResults" class="text-xl font-bold mb-4 border-b pb-2 w-full">
         Resultados
     </div>
@@ -18,7 +18,7 @@ const { projects, allSkillsFlat } = Astro.props;
         {
             projects.map((all) =>
                 all.data.map((t: imagesType, i: number) => (
-                    <div class="flex w-full self-center max-w-[48%] max-w-80 w-[70%] lg:max-w-[31%] mx-[1%] contenedor-destacados">
+                    <div class="flex w-fit self-center max-w-[48%] max-w-80 w-[70%] lg:max-w-[31%] mx-[1%] contenedor-destacados">
                         <ImgProjects
                             data={t}
                             index={i}

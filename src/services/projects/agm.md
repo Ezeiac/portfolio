@@ -1,11 +1,13 @@
 ---
 type: "startU"
+date: "2023-03-01"
 category: "Plataforma EdTech"
 icon: "solar:square-academic-cap-2-line-duotone"
 description: "Tienda en línea para la venta y distribución de programas académicos de universidades de EEUU."
 img: "agm"
 name: "AGM"
 link: "https://web.archive.org/web/20250612193756/https://latam.agmu.edu/"
+info: "Web machine"
 status: false
 color: "#da1f32"
 techs: 

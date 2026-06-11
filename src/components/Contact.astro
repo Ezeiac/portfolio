@@ -3,10 +3,10 @@ import { Icon } from "astro-icon/components";
 import FormContact from "./forms/FormContact.astro";
 ---
 
-<section id="contact" class="px-4 md:my-16 my-4">
+<section id="contact" class="px-4 md:pt-16 pt-4">
     <div class="mb-4">
         <h2 class="font-bold text-current mb-2">Contacto</h2>
-        <p class="">
+        <p class="text-(--text-secondary)">
             ¡Gracias por tu interés en mi trabajo! Si tienes alguna propuesta,
             duda o simplemente quieres saludar, puedes encontrarme y escribirme
             directamente a través de cualquiera de estos medios.
@@ -16,7 +16,7 @@ import FormContact from "./forms/FormContact.astro";
         <div class="space-y-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a
-                    href="https://linkedin.com/in/tu-usuario"
+                    href="https://www.linkedin.com/in/ezequiel-arena/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
@@ -32,7 +32,7 @@ import FormContact from "./forms/FormContact.astro";
                 </a>
 
                 <a
-                    href="https://github.com/tu-usuario"
+                    href="https://github.com/Ezeiac"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
@@ -48,7 +48,7 @@ import FormContact from "./forms/FormContact.astro";
                 </a>
 
                 <a
-                    href="mailto:tu-correo@email.com"
+                    href="mailto:ezearena@gmail.com"
                     class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
                 >
                     <Icon
@@ -62,7 +62,7 @@ import FormContact from "./forms/FormContact.astro";
                 </a>
 
                 <a
-                    href="https://wa.me/tu-numero-aqui"
+                    href="https://wa.me/34642392411?text=Me%20gustaria%20contactar%20contigo"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group"
@@ -77,10 +77,7 @@ import FormContact from "./forms/FormContact.astro";
                     >
                 </a>
 
-                <a
-                    href="https://goo.gl/maps/tu-enlace-de-google-maps"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div
                     class="flex items-center gap-4 p-4 rounded-xl border border-[currentColor] md:hover:bg-zinc-900 duration-300 group sm:col-span-2"
                 >
                     <Icon
@@ -91,7 +88,7 @@ import FormContact from "./forms/FormContact.astro";
                         class="font-medium md:group-hover:text-white transition-colors"
                         >Comunidad Valenciana, España</span
                     >
-                </a>
+                </div>
             </div>
         </div>
 

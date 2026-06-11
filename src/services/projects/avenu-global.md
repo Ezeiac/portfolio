@@ -1,11 +1,13 @@
 ---
 type: "startU"
+date: "2023-03-01"
 category: "Portal Institucional"
 icon: "solar:buildings-line-duotone"
 description: "Desarrollo de ecosistemas EdTech para la captación de partners (B2B) y estudiantes internacionales (B2C)."
 img: "avenuglobal"
 name: "Avenu Global"
 link: "https://web.archive.org/web/20240919104523/https://www.avenuglobal.com/"
+info: "Web machine"
 status: false
 color: "#06213a"
 techs: 

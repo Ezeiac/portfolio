@@ -1,5 +1,6 @@
 ---
 type: "startU"
+date: "2023-03-01"
 category: "Plataforma EdTech"
 icon: "solar:square-academic-cap-2-line-duotone"
 description: "Tienda en línea para la venta y distribución de programas académicos de universidades de EEUU."

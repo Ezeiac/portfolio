@@ -6,12 +6,14 @@ const projectsInfo = defineCollection({
   loader: glob({ base: './src/services/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     type: z.string(),
+    date: z.string(),
     category: z.string(),
     icon: z.string(),
     description: z.string(),
     img: z.string(),
     name: z.string(),
     link: z.string(),
+    info: z.string().optional(),
     status: z.boolean(),
     color: z.string(),
     techs: z.array(

@@ -4,7 +4,10 @@ import ProjectsGroup from "./projects/ProjectsGroup.astro";
 import ResultsSearch from "./projects/ResultsSearch.astro";
 import { projects } from "@/helpers/projects";
 import { listSkills } from "@/helpers/skills";
-import { allSkillsFlat, typesConTechsIguales } from "@/scripts/features/projectsData";
+import {
+    allSkillsFlat,
+    typesSameTechs,
+} from "@/scripts/features/projectsData";
 
 export type objTechs = {
     name: string;
@@ -13,14 +16,13 @@ export type objTechs = {
 
 ---
 
-<section id="projects" class="md:my-16 my-4">
+<section id="projects" class="md:pt-16 pt-4">
     <h2 class="my-8">Mis proyectos</h2>
 
     <div
         id="projectSection"
         class="w-full flex flex-col-reverse relative md:static md:flex-row"
     >
-
         <FilterSide listSkills={listSkills} />
 
         <div
@@ -40,7 +42,7 @@ export type objTechs = {
                         projects.map((project) => (
                             <ProjectsGroup
                                 project={project}
-                                typesConTechsIguales={typesConTechsIguales}
+                                typesSameTechs={typesSameTechs}
                                 allSkillsFlat={allSkillsFlat}
                             />
                         ))
@@ -74,10 +76,21 @@ export type objTechs = {
             techOptions: nodes.techOptions,
             allProjects: nodes.allProjects,
             sections: nodes.sections,
-            buttonClear: nodes.buttonClear,
+            clearfilters: nodes.clearfilters,
             resultsSection: nodes.resultsSection,
             nextTime: nodes.nextTime,
+            destacados: nodes.destacados,
         });
+    });
+
+    window.addEventListener("load", () => {
+        const nodes = getNodes();
+        const container = nodes.projectSection;
+        const heightList = nodes.projectSection?.offsetHeight;
+
+        if (heightList && container) {
+            container.style.minHeight = `${heightList}px`;
+        }
     });
 </script>
 

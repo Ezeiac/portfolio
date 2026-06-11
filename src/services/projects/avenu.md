@@ -1,5 +1,6 @@
 ---
 type: "startU"
+date: "2023-03-01"
 category: "Portal Institucional"
 icon: "solar:buildings-line-duotone"
 description: "Desarrollo de ecosistemas EdTech para la captación de partners (B2B) y estudiantes internacionales (B2C)."

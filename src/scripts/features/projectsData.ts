@@ -11,12 +11,16 @@ const projectBySection = projects.map((x) => {
     });
 });
 
-export const typesConTechsIguales = projectBySection
+
+export const typesSameTechs = projectBySection
     .map((str) => JSON.parse(str))
     .filter((section) => {
+
+        if (section.length <= 1) return
+
         const grupos = section.techs;
 
-        if (grupos.length <= 1) return true;
+        if (grupos.length <= 1) return false;
 
         const primerProyecto = grupos[0];
         const stringPrimerProyecto = primerProyecto

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { projects } from "@/helpers/projects";
 
 interface Props {
     listSkills: Array<{
@@ -9,11 +10,17 @@ interface Props {
 }
 
 const { listSkills } = Astro.props;
+
+const norepeatSkills = [
+    ...new Set(
+        projects.flatMap((f) =>
+            f.data.flatMap((x) => x.techs.map((t) => t.name)),
+        ),
+    ),
+];
 ---
 
-<div
-    class="md:w-1/5 sticky bottom-0 md:bottom-auto md:relative z-10 boxSkills bg-(--bg) md:bg-transparent"
->
+<div class="md:w-1/5 sticky bottom-0 md:bottom-auto md:relative z-10 boxSkills">
     <div
         class="flex flex-col md:sticky bottom-0 md:top-4 md:bottom-auto md:overflow-y-auto pb-8 boxSkills"
     >
@@ -26,7 +33,7 @@ const { listSkills } = Astro.props;
 
         <div
             id="tagsFilter"
-            class="flex-1 fixed md:static top-full duration-300 bg-(--bg) md:bg-transparent z-70 border-t md:border-none"
+            class="flex-1 fixed md:static top-[calc(100%-48px)] duration-300 bg-(--bg) md:bg-transparent z-70 border-t md:border-none"
         >
             <Icon
                 id="hideFilters"
@@ -40,7 +47,7 @@ const { listSkills } = Astro.props;
                 {
                     listSkills.map((s) => (
                         <div class="md:pb-[10%]">
-                            <p class="hidden md:block mb-2 text-sm text-neutral-500">
+                            <p class="hidden md:block mb-2 text-sm">
                                 {s.category}
                             </p>
                             <div class="flex flex-wrap">
@@ -48,22 +55,26 @@ const { listSkills } = Astro.props;
                                     .sort((a, b) =>
                                         a.name.localeCompare(b.name),
                                     )
-                                    .map((l) => (
-                                        <a
-                                            class="cursor-pointer m-1 relative opacity-40 rounded-full border px-[6px] duration-400 text-sm"
-                                            data-category={l.name}
-                                            href="#projectSection"
-                                        >
-                                            {l.name}
-                                        </a>
-                                    ))}
+                                    .map((l) => {
+                                        if (norepeatSkills.includes(l.name))
+                                            return (
+                                                <a
+                                                    class="cursor-pointer m-1 relative opacity-40 rounded-full border px-[6px] duration-400"
+                                                    data-category={l.name}
+                                                >
+                                                    {l.name}
+                                                </a>
+                                            );
+                                    })}
                             </div>
                         </div>
                     ))
                 }
             </div>
 
-            <div class="flex flex-row md:flex-col justify-around mt-4 md:mt-6">
+            <div
+                class="flex flex-row md:flex-col justify-around mt-4 md:mt-6 pb-4 md:pb-0"
+            >
                 <div id="typeFilter" class="flex flex-col">
                     <p class="mb-3 text-xs font-semibold">
                         Tipo de coincidencia
@@ -72,27 +83,27 @@ const { listSkills } = Astro.props;
                         <a
                             id="softFilter"
                             data-typefilter="softFilter"
-                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-l-full h-full text-sm py-1"
+                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-l-full h-full"
                         >
-                            <p>Parcial</p>
+                            Parcial
                         </a>
                         <a
                             id="hardFilter"
                             data-typefilter="hardFilter"
-                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-r-full h-full text-sm py-1"
+                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-r-full h-full"
                         >
-                            <p>Total</p>
+                            Total
                         </a>
                     </div>
                 </div>
 
                 <a
                     id="clearfilters"
-                    class="flex self-end md:self-start md:mt-auto flex-shrink-0 opacity-0 duration-1000 px-[6px] cursor-pointer text-sm items-center text-red-500"
+                    class="flex self-end invisible md:self-start md:mt-auto flex-shrink-0 duration-1000 px-[6px] cursor-pointer items-center text-red-500 mb-[2px]"
                 >
                     <Icon
                         name="lucide:filter-x"
-                        class="h-5 md:me-1 w-auto self-center ms-1"
+                        class="h-5 md:mx-1 w-auto self-center"
                     />
                     <p class="block">Borrar filtros</p>
                 </a>

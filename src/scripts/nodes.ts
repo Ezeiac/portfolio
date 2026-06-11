@@ -9,17 +9,19 @@ interface AppNodes {
     resultsSection: HTMLElement | null;
     typeFilter: NodeListOf<HTMLElement>;
     allProjects: NodeListOf<HTMLElement>;
+    destacados: NodeListOf<HTMLElement>;
     triggers: NodeListOf<HTMLElement>;
     mode: HTMLElement | null;
     mySite: HTMLElement | null;
     bgSite: HTMLElement | null;
     icons: NodeListOf<HTMLElement>;
     plusIcons: NodeListOf<HTMLElement>;
-    buttonClear: HTMLElement | null;
+    clearfilters: HTMLElement | null;
     form: HTMLFormElement | null;
     submit: HTMLButtonElement | null;
     submitText: HTMLElement | null;
     submitError: HTMLElement | null;
+    projectSection: HTMLElement | null;
 }
 
 export const getNodes = (): AppNodes => ({
@@ -32,10 +34,12 @@ export const getNodes = (): AppNodes => ({
     sections: document.querySelectorAll("[data-catall]"),
     resultsSection: document.querySelector("[data-results-section]"),
     typeFilter: document.querySelectorAll("[data-typefilter]"),
-    buttonClear: document.getElementById("clearfilters"),
+    clearfilters: document.getElementById("clearfilters"),
     allProjects: document.querySelectorAll(".isFilter"),
+    destacados: document.querySelectorAll(".contenedor-destacados"),
     triggers: document.querySelectorAll("[data-trigger-index]"),
-
+    projectSection: document.getElementById("projectSection"),
+    
     mode: document.querySelector("#mode"),
     mySite: document.querySelector("#mySite"),
     bgSite: document.querySelector("#bgSite"),

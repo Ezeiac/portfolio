@@ -1,11 +1,8 @@
 export function highlights(triggers: NodeListOf<HTMLElement> | HTMLElement[]) {
-    let timer: NodeJS.Timeout;
 
     triggers.forEach((trigger) => {
-        trigger.addEventListener("mouseenter", () => {
-            clearTimeout(timer);
+        trigger.addEventListener("click", () => {
 
-            timer = setTimeout(() => {
                 const targetIndex = trigger.dataset.triggerIndex;
                 const category = trigger.dataset.triggerCat;
 
@@ -30,11 +27,9 @@ export function highlights(triggers: NodeListOf<HTMLElement> | HTMLElement[]) {
                         }, 50);
                     }
                 });
-            }, 200);
         });
 
         trigger.addEventListener("mouseleave", () => {
-            clearTimeout(timer);
         });
     });
 }

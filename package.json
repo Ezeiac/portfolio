@@ -9,8 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "git": "git add . && git commit -m `especial` && git push origin main"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",

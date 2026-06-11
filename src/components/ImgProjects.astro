@@ -43,7 +43,7 @@ const restTechs = sortedTechs.slice(5);
             data-show={flatTechs}
             data-cat={type}
         >
-            <div class="overflow-hidden m-2 border-2 rounded-[16px] h-full duration-400 group/info bordercardmini relative">
+            <div class="overflow-hidden m-2 border-2 rounded-[16px] h-full duration-400 group/info bordercardmini place-items-center relative">
                 <div class="flex h-full rounded-lg">
                     <div class="rounded-[12px] overflow-hidden content-center duration-400 bordercolmini">
                         <Image
@@ -53,7 +53,7 @@ const restTechs = sortedTechs.slice(5);
                         />
                     </div>
                 </div>
-                <a
+                {/* <a
                     href={data.link}
                     target="_blank"
                     class="goLink pointer-events-none md:pointer-events-auto"
@@ -61,7 +61,7 @@ const restTechs = sortedTechs.slice(5);
                     <div class="md:group-hover/info:opacity-80 bg-(--bg) opacity-0 absolute inset-0 duration-400 content-center text-center">
                         <p class="px-2">Ir al sitio web</p>
                     </div>
-                </a>
+                </a> */}
             </div>
         </div>
     ) : (
@@ -81,7 +81,7 @@ const restTechs = sortedTechs.slice(5);
                         <Image
                             src={projectImage}
                             alt={`Captura del sitio de ${data.name}`}
-                            class={`w-full h-auto md:group-hover/card:scale-103 duration-600`}
+                            class={`w-full h-full md:group-hover/card:scale-103 duration-600`}
                         />
                     </div>
                 </a>
@@ -96,25 +96,21 @@ const restTechs = sortedTechs.slice(5);
                         target="_blank"
                     >
                         <div class="flex">
-                            <Icon
-                                name={data.icon}
-                                class="h-6 w-auto self-center me-2"
-                            />
                             <p class="flex">
                                 {`${data.name}`}
-                                {!data.status && (
-                                    <p class="hidden md:flex mincard relative group/machine">
+                                {data.info && (
+                                    <p class="hidden md:flex mincard relative group/machine self-center place-items-center h-full">
                                         <Icon
                                             name="lucide:info"
-                                            class="h-6 ms-2"
+                                            class="h-6 ms-1"
                                         />
                                         <span
-                                            class="absolute border z-99 opacity-0 transition-opacity duration-600 rounded-lg 
+                                            class="absolute border z-99 opacity-0 left-full transition-opacity duration-600 rounded-lg 
                                             px-2 py-1 tooltip whitespace-nowrap  pointer-events-none
                                             md:group-hover/machine:visible md:group-hover/machine:opacity-100"
                                             data-tooltip
                                         >
-                                            Accesible desde Web Machine
+                                            {data.info}
                                         </span>
                                     </p>
                                 )}
@@ -122,7 +118,7 @@ const restTechs = sortedTechs.slice(5);
                         </div>
                     </a>
                     <div class="flex justify-between h-fit mincard">
-                        <div class="flex flex-wrap w-full mt-2">
+                        <div class="flex flex-wrap w-full mt-2 md:mt-0">
                             {visibleTechs.map((i: techsType) => {
                                 return (
                                     <div
@@ -147,28 +143,33 @@ const restTechs = sortedTechs.slice(5);
                                     </div>
                                 );
                             })}
-                            <div
-                                class="relative h-8 content-center text-center mx-1"
-                                data-plusicon
-                            >
-                                <Icon name="line-md:plus" class="h-6 w-auto" />
+                            {restTechs.length > 0 && (
                                 <div
-                                    class="hidden absolute border z-50 opacity-0 transition-opacity duration-600 rounded-lg px-2 py-1 left-1/2 -translate-x-1/2 top-full tooltip whitespace-nowrap"
-                                    data-tooltip
+                                    class="relative h-8 content-center text-center mx-1"
+                                    data-plusicon
                                 >
-                                    {restTechs.map((r: techsType) => {
-                                        return (
-                                            <div
-                                                class={`${r.name.replace(/\s+/g, "")}`}
-                                            >
-                                                <p class="textIcon text-start">
-                                                    {r.name}
-                                                </p>
-                                            </div>
-                                        );
-                                    })}
+                                    <Icon
+                                        name="line-md:plus"
+                                        class="h-6 w-auto"
+                                    />
+                                    <div
+                                        class="hidden absolute border z-50 opacity-0 transition-opacity duration-600 rounded-lg px-2 py-1 left-1/2 -translate-x-1/2 top-full tooltip whitespace-nowrap"
+                                        data-tooltip
+                                    >
+                                        {restTechs.map((r: techsType) => {
+                                            return (
+                                                <div
+                                                    class={`${r.name.replace(/\s+/g, "")}`}
+                                                >
+                                                    <p class="textIcon text-start">
+                                                        {r.name}
+                                                    </p>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -328,21 +329,21 @@ const restTechs = sortedTechs.slice(5);
 
         #${data.img.replace(/\s+/g, "")} .bordercol,
         #${data.img.replace(/\s+/g, "")} .bordercard { 
-            border-color: ${data.color}80
+            border-color: ${data.color === "darkMode" ? "var(--text-primary)" : data.color + 80}
         }
 
         #${data.img.replace(/\s+/g, "")} .bordercardmini { 
-            border-color: ${data.color}50
+            border-color: ${data.color === "darkMode" ? "var(--text-primary)" : data.color + 50}
         }
 
         #${data.img.replace(/\s+/g, "")}:hover .bordercol,
         #${data.img.replace(/\s+/g, "")}:hover .bordercard,
         #${data.img.replace(/\s+/g, "")} .tooltip { 
-            border-color: ${data.color}
+            border-color: ${data.color === "darkMode" ? "var(--text-primary)" : data.color}
         }
 
         #${data.img.replace(/\s+/g, "")}:hover .bordercard { 
-            box-shadow: 0px 0px 15px ${data.color}, 0px 0px 20px ${data.color}35;
+            box-shadow: 0px 0px 15px ${data.color === "darkMode" ? "var(--text-primary)" : data.color}, 0px 0px 20px ${data.color === "darkMode" ? "var(--text-primary)" : data.color + 35};
         }
     `}
 ></style>

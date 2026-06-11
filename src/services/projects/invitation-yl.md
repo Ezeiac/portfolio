@@ -1,11 +1,12 @@
 ---
 type: "invitation"
+date: "2026-06-01"
 category: "Invitaciones a eventos"
-icon: "solar:letter-outline"
+icon: "solar:letter-opened-linear"
 description: "Tarjetas de invitación a eventos"
 img: "invitationYL"
-name: "Invitación"
-link: "https://casamientoyaniyleo.vercel.app/fliaArenaCaminos"
+name: "Estilo moderno"
+link: "https://demo-invitation-gold.vercel.app/demo"
 status: true
 color: "#54048d"
 techs: 
