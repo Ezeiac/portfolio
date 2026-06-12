@@ -22,6 +22,12 @@ interface AppNodes {
     submitText: HTMLElement | null;
     submitError: HTMLElement | null;
     projectSection: HTMLElement | null;
+    containerFilters: HTMLElement | null;
+    hidden: HTMLElement | null;
+    aboutMe: HTMLElement | null;
+    menu: HTMLElement | null;
+    title: HTMLElement | null;
+    subtitle: HTMLElement | null;
 }
 
 export const getNodes = (): AppNodes => ({
@@ -39,7 +45,9 @@ export const getNodes = (): AppNodes => ({
     destacados: document.querySelectorAll(".contenedor-destacados"),
     triggers: document.querySelectorAll("[data-trigger-index]"),
     projectSection: document.getElementById("projectSection"),
-    
+
+    containerFilters: document.getElementById("containerFilters"),
+
     mode: document.querySelector("#mode"),
     mySite: document.querySelector("#mySite"),
     bgSite: document.querySelector("#bgSite"),
@@ -52,4 +60,12 @@ export const getNodes = (): AppNodes => ({
     submitText: document.querySelector("#submitText"),
     submitError: document.querySelector("#submitError"),
 
+    hidden: document.getElementById("hiddenIntro"),
+    aboutMe: document.getElementById("aboutMe"),
+    menu: document.getElementById("menu"),
+    
+    title: document.getElementById("title"),
+    subtitle: document.getElementById("subtitle"),
 })
+
+export const mediaQ = window.matchMedia("(max-width:767px)")

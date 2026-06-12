@@ -22,9 +22,12 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
 <section id="skills" class="md:pt-16 pt-4 px-2 justify-items-center">
     <h2>Mi Stack</h2>
     <div class="justify-self-center">
-        <div id="containerIcons" class="flex justify-self-center py-8 max-w-[90%]">
+        <div
+            id="containerIcons"
+            class="flex justify-self-center py-8 max-w-[90%]"
+        >
             <div class="relative">
-                <h3 class="w-full text-center mb-4 md:mb-6">Las preferidas</h2>
+                <h3 class="w-full text-center mb-4 md:mb-6">Las preferidas</h3>
                 <div
                     class="flex flex-wrap justify-center gap-4 relative w-full"
                 >
@@ -60,7 +63,10 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
                 </div>
             </div>
         </div>
-        <div id="containerOthers" class="flex justify-self-center py-8 max-w-[90%]">
+        <div
+            id="containerOthers"
+            class="flex justify-self-center py-8 max-w-[90%]"
+        >
             <div class="relative w-full">
                 <h2 class="w-full text-center mb-4 md:mb-6">
                     Otras tecnologias y herramientas
@@ -99,6 +105,8 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
 </section>
 
 <script>
+    import { mediaQ } from "@/scripts/nodes";
+    
     const iconScale = (
         containerId: string,
         maxScale = 1.6,
@@ -169,8 +177,8 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
             });
         });
     };
+
     document.addEventListener("DOMContentLoaded", () => {
-        const mediaQ = window.matchMedia("(max-width: 768px)");
 
         const applyEffect = (e: MediaQueryListEvent | MediaQueryList) => {
             const n1 = document.getElementById("containerIcons");
@@ -178,7 +186,7 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
             if (n1) n1.replaceWith(n1.cloneNode(true));
             if (n2) n2.replaceWith(n2.cloneNode(true));
 
-            if (e.matches) {
+            if (e) {
                 iconScale("containerIcons", 1.6, 100, true);
                 iconScale("containerOthers", 1.3, 80, true);
             } else {

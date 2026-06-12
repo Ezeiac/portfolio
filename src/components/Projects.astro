@@ -4,10 +4,7 @@ import ProjectsGroup from "./projects/ProjectsGroup.astro";
 import ResultsSearch from "./projects/ResultsSearch.astro";
 import { projects } from "@/helpers/projects";
 import { listSkills } from "@/helpers/skills";
-import {
-    allSkillsFlat,
-    typesSameTechs,
-} from "@/scripts/features/projectsData";
+import { allSkillsFlat, typesSameTechs } from "@/scripts/features/projectsData";
 
 export type objTechs = {
     name: string;
@@ -85,11 +82,22 @@ export type objTechs = {
     window.addEventListener("load", () => {
         const nodes = getNodes();
         const container = nodes.projectSection;
-        const heightList = nodes.projectSection?.offsetHeight;
 
-        if (heightList && container) {
-            container.style.minHeight = `${heightList}px`;
-        }
+        if (!container) return;
+
+        const observer = new ResizeObserver((entries) => {
+            const heightList = container.getBoundingClientRect().height;
+
+            if (heightList > 0) {
+                if (window.innerWidth) {
+                    container.style.height = "auto";
+                } else {
+                    container.style.height = `${heightList}px`;
+                }
+            }
+        });
+
+        observer.observe(container);
     });
 </script>
 

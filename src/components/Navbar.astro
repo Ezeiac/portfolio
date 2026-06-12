@@ -5,86 +5,160 @@ import { Icon } from "astro-icon/components";
 <section>
     <div
         id="menu"
-        class="group flex fixed left-0 duration-500 z-50
-               bottom-0 w-full border-t translate-y-full
-               lg:top-1/2 lg:bottom-auto lg:w-auto border lg:-translate-y-1/2 translate-y-0"
+        class="group fixed bottom-0 md:bottom-auto left-0 right-0 md:right-auto
+    md:w-fit h-fit z-50 border-y md:border bg-transparent overflow-visible
+    transition-all duration-500 opacity-0 translate-y-full md:-translate-x-full md:translate-y-0"
     >
+        <div id="menuBg" class=""></div>
+
         <div
-            id="menuContainer"
-            class="flex w-full px-2 py-3 justify-around overflow-auto
-                   lg:flex-col lg:w-fit lg:justify-between lg:gap-2"
+            class="w-full md:w-auto overflow-x-auto overflow-y-visible md:overflow-visible"
         >
-        <div id="menuBg"></div>
-            <a href="#mySite" class="flex items-center cursor-pointer">
-                <div class="flex items-center justify-center min-w-[2.5rem]">
-                    <Icon name="line-md:account" class="w-5 h-6 text-center" />
-                </div>
-                <p
-                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
-                >
-                    Sobre mi
-                </p>
-            </a>
-
-            <a href="#skills" class="flex items-center cursor-pointer">
-                <div class="flex items-center justify-center min-w-[2.5rem]">
+            <div
+                id="menuContainer"
+                class="flex px-5 md:px-2 py-3 justify-around md:flex-col w-max md:w-fit md:justify-between md:gap-2"
+            >
+                <div class="fixed md:hidden left-0">
                     <Icon
-                        name="line-md:lightbulb-filled"
-                        class="w-5 h-6 text-center"
+                        name="line-md:chevron-left"
+                        class="w-6 h-6 text-center rounded-e-full bg-(--bg)"
                     />
                 </div>
-                <p
-                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
-                >
-                    Habilidades
-                </p>
-            </a>
-
-            <a href="#projects" class="flex items-center cursor-pointer">
-                <div class="flex items-center justify-center min-w-[2.5rem]">
+                <div class="fixed md:hidden right-0">
                     <Icon
-                        name="line-md:briefcase-check-filled"
-                        class="w-5 h-6 text-center"
+                        name="line-md:chevron-right"
+                        class="w-6 h-6 text-center rounded-s-full bg-(--bg)"
                     />
                 </div>
-                <p
-                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
-                >
-                    Mis proyectos
-                </p>
-            </a>
+                <div id="menuBg" class=""></div>
 
-            <a href="#contact" class="flex items-center cursor-pointer">
-                <div class="flex items-center justify-center min-w-[2.5rem]">
-                    <Icon name="line-md:email" class="w-5 h-6 text-center" />
-                </div>
-                <p
-                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
-                >
-                    Contacto
-                </p>
-            </a>
+                <a href="#mySite" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            name="line-md:account"
+                            class="w-5 h-6 text-center"
+                        />
+                    </div>
+                    <p
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                    >
+                        Sobre mi
+                    </p>
+                </a>
 
-            <div id="mode" class="flex items-center cursor-pointer">
-                <div class="flex items-center justify-center min-w-[2.5rem]">
-                    <Icon
-                        name="line-md:light-dark"
-                        class="w-5 h-6 text-center"
-                    />
-                </div>
-                <p
-                    class="hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
+                <a href="#skills" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            name="line-md:lightbulb-filled"
+                            class="w-5 h-6 text-center"
+                        />
+                    </div>
+                    <p
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                    >
+                        Habilidades
+                    </p>
+                </a>
+
+                <a href="#projects" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            name="line-md:briefcase-check-filled"
+                            class="w-5 h-6 text-center"
+                        />
+                    </div>
+                    <p
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                    >
+                        Mis proyectos
+                    </p>
+                </a>
+
+                <a href="#contact" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            name="line-md:email"
+                            class="w-5 h-6 text-center"
+                        />
+                    </div>
+                    <p
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                    >
+                        Contacto
+                    </p>
+                </a>
+
+                <div
+                    id="containerCv"
+                    class="flex flex-col cursor-pointer group/cv"
                 >
-                    Modo oscuro
-                </p>
+                    <div class="flex">
+                        <div
+                            class="flex items-center justify-center min-w-[2.5rem]"
+                        >
+                            <Icon
+                                name="line-md:text-box-to-text-box-multiple-transition"
+                                class="w-5 h-6 text-center"
+                            />
+                        </div>
+                        <p
+                            class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        >
+                            Descargar CV
+                        </p>
+                    </div>
+                    <div
+                        id="downloadCv"
+                        class="absolute w-[stretch] bottom-full left-1/2 md:static flex flex-col h-0 md:w-0 duration-300 overflow-hidden border-x border-t md:border-0 bg-(--bg)"
+                    >
+                        <a
+                            href="/digital/Ezequiel%20Arena%20CV.pdf"
+                            target="_blank"
+                            class="ps-2 md:ps-4 my-1 whitespace-nowrap w-fit justify-end md:justify-start"
+                            >Version digital</a
+                        >
+                        <a
+                            href="/print/Ezequiel%20Arena%20CV.pdf"
+                            target="_blank"
+                            class="ps-2 md:ps-4 whitespace-nowrap w-fit justify-end md:justify-start"
+                            >Version imprimir</a
+                        >
+                    </div>
+                </div>
+                <div id="mode" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            name="line-md:light-dark"
+                            class="w-5 h-6 text-center"
+                        />
+                    </div>
+                    <p
+                        class="hidden md:flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                    >
+                        Modo claro
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <script>
+    import { mediaQ } from "@/scripts/nodes";
+
     document.addEventListener("DOMContentLoaded", () => {
         const modeBtn = document.querySelector("#mode");
+        const textMode = modeBtn?.querySelector("p");
 
         let actualMode: string = document.documentElement.classList.contains(
             "dark",
@@ -97,10 +171,16 @@ import { Icon } from "astro-icon/components";
                 document.documentElement.classList.add("dark");
                 document.body.classList.remove("master-white");
                 document.body.classList.add("master-black");
+                if (textMode) {
+                    textMode.innerText = "Modo claro";
+                }
             } else {
                 document.documentElement.classList.remove("dark");
                 document.body.classList.remove("master-black");
                 document.body.classList.add("master-white");
+                if (textMode) {
+                    textMode.innerText = "Modo oscuro";
+                }
             }
             localStorage.setItem("theme", theme);
             actualMode = theme;
@@ -122,7 +202,25 @@ import { Icon } from "astro-icon/components";
             applyTheme(nextTheme);
         });
 
-        const wNab = document.querySelectorAll<HTMLParagraphElement>("#menuContainer p");
+        const menu = document.getElementById("menu");
+
+        const hNav = document.getElementById("menuContainer");
+
+        const positionMenu = (e: MediaQueryListEvent | MediaQueryList) => {
+            if (!menu || !hNav) return;
+            if (e.matches) {
+                menu.style.top = "unset";
+            } else {
+                menu.style.top = `calc(50% - ${hNav?.offsetHeight / 2}px)`;
+            }
+        };
+
+        positionMenu(mediaQ);
+
+        mediaQ.addEventListener("change", positionMenu);
+
+        const wNab =
+            document.querySelectorAll<HTMLParagraphElement>("#menuContainer p");
         let widthMax: number = 0;
 
         wNab.forEach((w) => {
@@ -134,9 +232,43 @@ import { Icon } from "astro-icon/components";
         });
 
         wNab.forEach((w) => {
-            w.classList.add("w-0", "lg:transition-all", "lg:duration-300");
+            w.classList.add("md:w-0", "md:transition-all", "md:duration-300");
 
             w.style.setProperty("--max-width", `${widthMax}px`);
+        });
+
+        const downloadCv = document.getElementById("downloadCv");
+        const downloadCvRef =
+            document.querySelectorAll<HTMLParagraphElement>("#downloadCv a");
+        const containerCv = document.querySelector("#containerCv p");
+        let openCV = false;
+
+        const showCv = (e: MediaQueryListEvent | MediaQueryList) => {
+            if (!downloadCv) return;
+
+            if (openCV) {
+                downloadCv.style.height = "0px";
+                if (!e.matches) {
+                    downloadCv.style.width = "0";
+                } else {
+                    downloadCv.style.width = "100%";
+                }
+                openCV = false;
+            } else {
+                downloadCv.style.width = "100%";
+                downloadCv.style.height = "56px";
+                openCV = true;
+            }
+        };
+
+        containerCv?.addEventListener("click", () => {
+            showCv(mediaQ);
+        });
+
+        menu?.addEventListener("mouseleave", () => {
+            if (!downloadCv) return;
+            openCV = true;
+            showCv(mediaQ);
         });
     });
 </script>

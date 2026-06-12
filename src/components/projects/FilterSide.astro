@@ -20,94 +20,122 @@ const norepeatSkills = [
 ];
 ---
 
-<div class="md:w-1/5 sticky bottom-0 md:bottom-auto md:relative z-10 boxSkills">
+<div class="md:w-1/5 sticky md:static bottom-8 md:bottom-auto relative z-10">
     <div
-        class="flex flex-col md:sticky bottom-0 md:top-4 md:bottom-auto md:overflow-y-auto pb-8 boxSkills"
+        class="flex flex-col md:sticky bottom-0 md:top-4 md:bottom-auto md:overflow-y-auto pb-8 items-end boxSkills"
     >
         <div
-            id="showFilters"
-            class="absolute md:hidden bottom-14 right-8 mt-10 rounded-full w-fit z-60 bg-(--text-primary) p-2 cursor-pointer"
-        >
-            <Icon name="lucide:filter" class="h-8 w-auto text-(--bg)" />
-        </div>
-
-        <div
             id="tagsFilter"
-            class="flex-1 fixed md:static top-[calc(100%-48px)] duration-300 bg-(--bg) md:bg-transparent z-70 border-t md:border-none"
+            class="h-fit w-fit duration-300 md:bg-transparent z-70 relative"
         >
-            <Icon
+            <div
                 id="hideFilters"
-                name="lucide:chevron-down"
-                class="h-10 w-auto justify-self-center md:hidden cursor-pointer"
-            />
-
-            <p class="font-bold mb-2">Filtrar por</p>
-
-            <div class="flex flex-col overflow-x-auto md:overflow-visible">
-                {
-                    listSkills.map((s) => (
-                        <div class="md:pb-[10%]">
-                            <p class="hidden md:block mb-2 text-sm">
-                                {s.category}
-                            </p>
-                            <div class="flex flex-wrap">
-                                {s.skills
-                                    .sort((a, b) =>
-                                        a.name.localeCompare(b.name),
-                                    )
-                                    .map((l) => {
-                                        if (norepeatSkills.includes(l.name))
-                                            return (
-                                                <a
-                                                    class="cursor-pointer m-1 relative opacity-40 rounded-full border px-[6px] duration-400"
-                                                    data-category={l.name}
-                                                >
-                                                    {l.name}
-                                                </a>
-                                            );
-                                    })}
-                            </div>
-                        </div>
-                    ))
-                }
+                class="flex w-fit bg-(--bg) md:bg-transparent right-0 border border-b-0 md:border-none justify-self-end"
+            >
+                <p class="font-bold mx-2 md:mx-0">Filtrar por</p>
+                <Icon
+                    name="lucide:chevron-down"
+                    class="h-6 w-auto justify-self-center md:hidden cursor-pointer rotate-180 duration-500"
+                />
             </div>
 
             <div
-                class="flex flex-row md:flex-col justify-around mt-4 md:mt-6 pb-4 md:pb-0"
+                id="containerFilters"
+                class="grid grid-rows-[0fr] lg:grid-rows-[1fr] overflow-hidden lg:overflow-auto border-t md:border-none bg-(--bg) md:bg-transparent transition-[grid-template-rows] duration-500 ease-in-out"
             >
-                <div id="typeFilter" class="flex flex-col">
-                    <p class="mb-3 text-xs font-semibold">
-                        Tipo de coincidencia
-                    </p>
-                    <div class="flex md:mb-4">
+                <div class="min-h-0 w-full">
+                    <div
+                        class="flex flex-col overflow-x-auto md:overflow-visible"
+                    >
+                        {
+                            listSkills.map((s) => (
+                                <div class="md:pb-[10%]">
+                                    <p class="hidden md:block mb-2 text-sm">
+                                        {s.category}
+                                    </p>
+                                    <div class="flex flex-wrap">
+                                        {s.skills
+                                            .sort((a, b) =>
+                                                a.name.localeCompare(b.name),
+                                            )
+                                            .map((l) => {
+                                                if (
+                                                    norepeatSkills.includes(
+                                                        l.name,
+                                                    )
+                                                )
+                                                    return (
+                                                        <a
+                                                            class="cursor-pointer m-1 relative opacity-40 rounded-full border px-[6px] duration-400"
+                                                            data-category={
+                                                                l.name
+                                                            }
+                                                        >
+                                                            {l.name}
+                                                        </a>
+                                                    );
+                                            })}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <div
+                        class="flex flex-row md:flex-col justify-around mt-4 md:mt-6 pb-4 md:pb-0"
+                    >
+                        <div id="typeFilter" class="flex flex-col">
+                            <p class="mb-3 text-xs font-semibold">
+                                Tipo de coincidencia
+                            </p>
+                            <div class="flex md:mb-4">
+                                <a
+                                    id="softFilter"
+                                    data-typefilter="softFilter"
+                                    class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-l-full h-full"
+                                >
+                                    Parcial
+                                </a>
+                                <a
+                                    id="hardFilter"
+                                    data-typefilter="hardFilter"
+                                    class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-r-full h-full"
+                                >
+                                    Total
+                                </a>
+                            </div>
+                        </div>
+
                         <a
-                            id="softFilter"
-                            data-typefilter="softFilter"
-                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-l-full h-full"
+                            id="clearfilters"
+                            class="flex self-end invisible md:self-start md:mt-auto flex-shrink-0 duration-1000 px-[6px] cursor-pointer items-center text-red-500 mb-[2px]"
                         >
-                            Parcial
-                        </a>
-                        <a
-                            id="hardFilter"
-                            data-typefilter="hardFilter"
-                            class="flex justify-center opacity-40 border px-3 cursor-pointer w-fit duration-400 rounded-r-full h-full"
-                        >
-                            Total
+                            <Icon
+                                name="lucide:filter-x"
+                                class="h-5 md:mx-1 w-auto self-center"
+                            />
+                            <p class="block">Borrar filtros</p>
                         </a>
                     </div>
                 </div>
-
-                <a
-                    id="clearfilters"
-                    class="flex self-end invisible md:self-start md:mt-auto flex-shrink-0 duration-1000 px-[6px] cursor-pointer items-center text-red-500 mb-[2px]"
-                >
-                    <Icon
-                        name="lucide:filter-x"
-                        class="h-5 md:mx-1 w-auto self-center"
-                    />
-                    <p class="block">Borrar filtros</p>
-                </a>
             </div>
         </div>
     </div>
+
+    <script>
+        import { getNodes } from "@/scripts/nodes";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nodes = getNodes();
+
+            const hideFilters = nodes.hideFilters;
+            const containerFilters = nodes.containerFilters;
+            const icon = hideFilters?.querySelector("svg");
+
+            hideFilters?.addEventListener("click", () => {
+                containerFilters?.classList.toggle("grid-rows-[1fr]");
+                icon?.classList.toggle("rotate-180");
+            });
+        });
+    </script>
 </div>
