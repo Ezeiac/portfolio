@@ -41,19 +41,22 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, .h1 {
+h1,
+.h1 {
     font-size: clamp(1.625rem, 3.5vw, 2.125rem);
     font-weight: 700;
     line-height: 1.2;
 }
 
-h2, .h2 {
+h2,
+.h2 {
     font-size: clamp(1.375rem, 2.5vw, 1.75rem);
     font-weight: 600;
     line-height: 1.25;
 }
 
-h3, .h3 {
+h3,
+.h3 {
     font-size: clamp(1.125rem, 2vw, 1.375rem);
     font-weight: 500;
     line-height: 1.3;
@@ -82,6 +85,28 @@ p {
 .master-white *:has(h1, h2, h3, a span),
 .master-black *:has(h1, h2, h3, a span) {
     color: var(--text-primary);
+}
+
+#title.noAnimated,
+#subtitle.noAnimated {
+    transition: all 0.8s;
+    animation: transY 0.8s;
+}
+
+#title:not(.noAnimated),
+#subtitle:not(.noAnimated) {
+    transition: all 5s;
+}
+
+
+@keyframes transY {
+    from {
+        transform: translateY(1rem)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
 }
 
 #title p {
