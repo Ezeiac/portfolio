@@ -14,11 +14,11 @@ const { projects, allSkillsFlat } = Astro.props;
     <div id="titleResults" class="text-xl font-bold mb-4 border-b pb-2 w-full">
         Resultados
     </div>
-    <div class="flex flex-wrap w-full">
+    <div class="flex flex-wrap w-full justify-center md:justify-start">
         {
             projects.map((all) =>
                 all.data.map((t: imagesType, i: number) => (
-                    <div class="flex w-fit self-center max-w-[48%] max-w-80 w-[70%] lg:max-w-[31%] mx-[1%] contenedor-destacados">
+                    <div class="md:max-w-[48%] lg:max-w-[31%] max-w-80 mx-[1%] w-full">
                         <ImgProjects
                             data={t}
                             index={i}
