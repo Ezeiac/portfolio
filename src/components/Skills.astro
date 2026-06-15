@@ -148,6 +148,8 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
                     const iconCenterX = rect.left + rect.width / 2;
                     const iconCenterY = rect.top + rect.height / 2;
 
+                    console.log('enter')
+
                     const distanceX = mouseX - iconCenterX;
                     const distanceY = mouseY - iconCenterY;
                     const distance = Math.sqrt(
@@ -186,7 +188,7 @@ const restTechs = skillsWCat.filter((f) => !f.fav);
             if (n1) n1.replaceWith(n1.cloneNode(true));
             if (n2) n2.replaceWith(n2.cloneNode(true));
 
-            if (e) {
+            if (e.matches) {
                 iconScale("containerIcons", 1.6, 100, true);
                 iconScale("containerOthers", 1.3, 80, true);
             } else {
