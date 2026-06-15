@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const nodes = getNodes()
     const title = nodes.title
     const subtitle = nodes.subtitle
-    const againNo = localStorage.getItem('intro')
 
     const letters = "abcdefghijklmnopqrstuvwxyz";
     const h1Text = "Ezequiel Arena";
@@ -93,20 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     }
 
-    localStorage.setItem('intro', 'true')
-
     if (!title || !subtitle) return
 
-    if (!againNo) {
-        generateText(title, h1Array, 10, 30, 0, false)
-        generateText(subtitle, h2Array, 15, 40, 300, true)
-    } else {
-        title.innerText = h1Text
-        subtitle.innerText = h2Text
-        title.classList.add('noAnimated')
-        subtitle.classList.add('noAnimated')
-        showSite()
-    }
+    generateText(title, h1Array, 10, 30, 0, false)
+    generateText(subtitle, h2Array, 15, 40, 300, true)
+
 });
 
 
