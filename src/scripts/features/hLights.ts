@@ -1,35 +1,33 @@
 export function highlights(triggers: NodeListOf<HTMLElement> | HTMLElement[]) {
-
     triggers.forEach((trigger) => {
         trigger.addEventListener("click", () => {
+            const targetIndex = trigger.dataset.triggerIndex;
+            const category = trigger.dataset.triggerCat;
 
-                const targetIndex = trigger.dataset.triggerIndex;
-                const category = trigger.dataset.triggerCat;
+            if (!targetIndex || !category) return;
 
-                if (!targetIndex || !category) return;
+            const destacadas = document.querySelectorAll<HTMLElement>(
+                `[data-destacado-cat="${category}"]`
+            );
 
-                const destacada = document.querySelectorAll<HTMLElement>(
-                    `[data-destacado-cat="${category}"]`,
-                );
+            requestAnimationFrame(() => {
+                destacadas.forEach((dest) => {
+                    const isTarget = dest.dataset.destacadoIndex === targetIndex;
 
-                destacada.forEach((dest) => {
-                    if (dest.dataset.destacadoIndex === targetIndex) {
+                    if (isTarget) {
                         dest.classList.remove("hidden");
-                        setTimeout(() => {
-                            dest.classList.add("block");
+                        dest.classList.add("block");
+                        
+                        requestAnimationFrame(() => {
                             dest.classList.remove("opacity-0");
-                        }, 50);
+                        });
                     } else {
+                        dest.classList.add("opacity-0");
+                        dest.classList.remove("block");
                         dest.classList.add("hidden");
-                        setTimeout(() => {
-                            dest.classList.remove("block");
-                            dest.classList.add("opacity-0");
-                        }, 50);
                     }
                 });
-        });
-
-        trigger.addEventListener("mouseleave", () => {
+            });
         });
     });
 }
