@@ -9,6 +9,8 @@ import { Icon } from "astro-icon/components";
         md:w-fit h-fit z-50 border-y md:border bg-transparent overflow-visible
         duration-500 opacity-0 translate-y-full md:-translate-x-full md:translate-y-0"
     >
+        <div id="menuBg" class=""></div>
+
         <div
             class="w-full md:w-auto overflow-x-auto overflow-y-visible md:overflow-visible"
         >
@@ -19,13 +21,13 @@ import { Icon } from "astro-icon/components";
                 <div class="fixed md:hidden left-0">
                     <Icon
                         name="line-md:chevron-left"
-                        class="w-6 h-6 text-center rounded-e-full bg-(--bg)"
+                        class="w-6 h-6 text-center rounded-e-full"
                     />
                 </div>
                 <div class="fixed md:hidden right-0">
                     <Icon
                         name="line-md:chevron-right"
-                        class="w-6 h-6 text-center rounded-s-full bg-(--bg)"
+                        class="w-6 h-6 text-center rounded-s-full"
                     />
                 </div>
 
@@ -114,7 +116,7 @@ import { Icon } from "astro-icon/components";
                     </div>
                     <div
                         id="downloadCv"
-                        class="absolute w-[stretch] bottom-full left-1/2 md:static flex flex-col h-0 md:w-0 duration-300 overflow-hidden border-x border-t md:border-0 bg-(--bg)"
+                        class="absolute w-[stretch] bottom-full left-1/2 md:static flex flex-col h-0 md:w-0 duration-300 overflow-hidden border-x border-t md:border-0"
                     >
                         <a
                             href="/digital/Ezequiel%20Arena%20CV.pdf"
