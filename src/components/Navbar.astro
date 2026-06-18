@@ -7,12 +7,11 @@ import { Icon } from "astro-icon/components";
         id="menu"
         class="group fixed bottom-0 md:bottom-auto left-0 right-0 md:right-auto
         md:w-fit h-fit z-50 border-y md:border bg-transparent overflow-visible
-        duration-500 
-        opacity-0 
-        translate-y-full md:-translate-x-full md:translate-y-0
-        "
+        duration-500
+        opacity-0
+        translate-y-full md:-translate-x-full md:translate-y-0"
     >
-        <!-- <div id="menuBg" class=""></div> -->
+        <div id="menuBg" class=""></div>
 
         <div
             class="w-full md:w-auto overflow-x-auto overflow-y-visible md:overflow-visible"
@@ -24,13 +23,13 @@ import { Icon } from "astro-icon/components";
                 <div class="fixed md:hidden left-0">
                     <Icon
                         name="line-md:chevron-left"
-                        class="w-6 h-6 text-center rounded-e-full"
+                        class="w-6 h-6 text-center rounded-e-full bg-(--bg)"
                     />
                 </div>
                 <div class="fixed md:hidden right-0">
                     <Icon
                         name="line-md:chevron-right"
-                        class="w-6 h-6 text-center rounded-s-full"
+                        class="w-6 h-6 text-center rounded-s-full bg-(--bg)"
                     />
                 </div>
 

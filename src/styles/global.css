@@ -232,10 +232,10 @@ p {
     content: "";
     position: absolute;
     width: 100dvw;
-    height: 120dvh;
+    height: 100dvh;
     transform-origin: center;
     left: 30px;
-    top: 50%;
+    top: calc(50% + 88px);
     right: unset;
     bottom: unset;
     will-change: transform, opacity;
