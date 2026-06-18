@@ -231,8 +231,8 @@ p {
 #menuBg::before {
     content: "";
     position: absolute;
-    width: 500vmax;
-    height: 500vmax;
+    width: 300vmax;
+    height: 300vmax;
     transform-origin: center;
     left: 30px;
     top: calc(50% + 68px);
