@@ -87,15 +87,9 @@ p {
     color: var(--text-primary);
 }
 
-#title.noAnimated,
-#subtitle.noAnimated {
-    transition: all 0.8s;
-    animation: transY 0.8s;
-}
-
-#title:not(.noAnimated),
-#subtitle:not(.noAnimated) {
-    transition: all 5s;
+#title,
+#subtitle {
+    transition: opacity 5s;
 }
 
 @keyframes transY {
