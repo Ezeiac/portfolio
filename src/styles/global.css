@@ -231,11 +231,11 @@ p {
 #menuBg::before {
     content: "";
     position: absolute;
-    width: 300vmax;
-    height: 300vmax;
+    width: 100dvw;
+    height: 120dvh;
     transform-origin: center;
     left: 30px;
-    top: calc(50% + 68px);
+    top: 50%;
     right: unset;
     bottom: unset;
     will-change: transform, opacity;
@@ -243,7 +243,7 @@ p {
             var(--bg-on) 0%,
             var(--bg-on) 40%,
             transparent 60%);
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(4);
     opacity: 1;
     transition:
         transform 2.8s cubic-bezier(0.15, 0.85, 0.31, 1),
@@ -285,7 +285,7 @@ button#clearfilters,
     #menuBg::before {
         left: unset;
         top: unset;
-        transform: translate(50%, 50%) scale(1);
+        transform: translate(50%, 50%) scale(5);
     }
 
     #menuBg::before {
