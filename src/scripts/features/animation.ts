@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!title || !subtitle) return;
 
+    const themeButton = document.querySelector("#theme-toggle") as HTMLElement | null;
+    
+    if (themeButton) {
+        themeButton.style.pointerEvents = "none";
+        themeButton.style.opacity = "0.5";
+    }
+
     const letters = "abcdefghijklmnopqrstuvwxyz";
     const h1Text = "Ezequiel Arena";
     const h2Text = "Desarrollador frontend";
@@ -98,6 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     nodes.menu.classList.remove("opacity-0", "translate-y-full", "md:-translate-x-full");
                     nodes.menu.classList.add("opacity-100", "translate-y-0", "md:translate-x-0");
                 }
+
+                if (themeButton) {
+                    themeButton.style.pointerEvents = "auto";
+                    themeButton.style.opacity = "1";
+                }
+
             }, 50);
         });
     };
