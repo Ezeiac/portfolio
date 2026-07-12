@@ -68,4 +68,4 @@ export const getNodes = (): AppNodes => ({
     subtitle: document.getElementById("subtitle"),
 })
 
-export const mediaQ = window.matchMedia("(max-width:767px)")
+export const mediaQ = window.matchMedia("(max-width:768px)")
