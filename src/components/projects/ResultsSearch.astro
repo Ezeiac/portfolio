@@ -14,17 +14,17 @@ const { projects, allSkillsFlat } = Astro.props;
     <div id="titleResults" class="text-xl font-bold mb-4 border-b pb-2 w-full">
         Resultados
     </div>
-    <div class="flex flex-wrap w-full justify-center md:justify-start">
+    <div
+        class="flex flex-wrap w-full justify-center md:justify-start [&>div]:md:max-w-[48%] [&>div]:lg:max-w-[31%] [&>div]:max-w-80 [&>div]:mx-[1%] [&>div]:w-full"
+    >
         {
             projects.map((all) =>
                 all.data.map((t: imagesType, i: number) => (
-                    <div class="md:max-w-[48%] lg:max-w-[31%] max-w-80 mx-[1%] w-full">
-                        <ImgProjects
-                            data={t}
-                            index={i}
-                            allSkillsFlat={allSkillsFlat}
-                        />
-                    </div>
+                    <ImgProjects
+                        data={t}
+                        index={i}
+                        allSkillsFlat={allSkillsFlat}
+                    />
                 )),
             )
         }
