@@ -92,4 +92,18 @@ skills:
         order: 13,
         fav: false
         }
+    - { 
+        name: "Vitest",
+        repo: "simple-icons:vitest",
+        url: "https://api.iconify.design/simple-icons:vitest.svg",
+        order: 14,
+        fav: false
+        }
+    - { 
+        name: "React testing\nlibrary",
+        repo: "simple-icons:testinglibrary",
+        url: "https://api.iconify.design/simple-icons:testinglibrary.svg",
+        order: 15,
+        fav: false
+        }
 ---

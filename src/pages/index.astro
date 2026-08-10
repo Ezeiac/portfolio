@@ -15,7 +15,7 @@ import "@/styles/global.css";
 		</div>
 		<div
 			id="hiddenIntro"
-			class="translate-y-4 duration-800 opacity-0 hidden"
+			class="translate-y-4 duration-[800ms] opacity-0 hidden lg:mx-15"
 		>
 			<Skills />
 			<div class="max-w-4xl mx-auto px-2">
@@ -28,7 +28,9 @@ import "@/styles/global.css";
 	<div id="bgSite"></div>
 </Layout>
 
-<script src="@/scripts/features/animation.ts"></script>
+<script>
+	import "@/scripts/features/animation.ts";
+</script>
 
 <script is:inline>
 	const localTheme = localStorage.getItem("theme");

@@ -2,14 +2,11 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section>
+<section id="sect" class="duration-1200 opacity-0">
     <div
         id="menu"
-        class="group fixed bottom-0 md:bottom-auto left-0 right-0 md:right-auto
-        md:w-fit h-fit z-50 border-y md:border bg-transparent overflow-visible
-        duration-500
-        opacity-0
-        translate-y-full md:-translate-x-full md:translate-y-0
+        class="group fixed bottom-0 lg:bottom-auto left-0 right-0 lg:right-auto
+        lg:w-fit h-fit z-50 border-y lg:border overflow-visible
         flex"
     >
         <div id="menuBg" class=""></div>
@@ -21,11 +18,11 @@ import { Icon } from "astro-icon/components";
             />
         </div>
         <div
-            class="w-full md:w-auto overflow-x-auto overflow-y-visible md:overflow-visible"
+            class="w-full lg:w-auto justify-between overflow-x-auto overflow-y-visible lg:overflow-visible"
         >
             <div
                 id="menuContainer"
-                class="flex md:px-2 py-3 justify-around md:flex-col w-max md:w-fit md:justify-between md:gap-2"
+                class="flex pe-3 lg:px-2 py-3 justify-around lg:flex-col stretch lg:w-fit justify-between lg:gap-2"
             >
                 <a href="#mySite" class="flex items-center cursor-pointer">
                     <div
@@ -37,7 +34,7 @@ import { Icon } from "astro-icon/components";
                         />
                     </div>
                     <p
-                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
                     >
                         Sobre mi
                     </p>
@@ -53,7 +50,7 @@ import { Icon } from "astro-icon/components";
                         />
                     </div>
                     <p
-                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
                     >
                         Habilidades
                     </p>
@@ -69,7 +66,7 @@ import { Icon } from "astro-icon/components";
                         />
                     </div>
                     <p
-                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
                     >
                         Mis proyectos
                     </p>
@@ -85,7 +82,7 @@ import { Icon } from "astro-icon/components";
                         />
                     </div>
                     <p
-                        class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        class="flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
                     >
                         Contacto
                     </p>
@@ -105,28 +102,49 @@ import { Icon } from "astro-icon/components";
                             />
                         </div>
                         <p
-                            class="flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                            class="flex text-[14px] whitespace-nowrap overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:w-[var(--max-width)]"
                         >
                             Descargar CV
                         </p>
                     </div>
                     <div
                         id="downloadCv"
-                        class="absolute w-[stretch] bottom-full left-1/2 md:static flex flex-col h-0 md:w-0 duration-300 overflow-hidden border-x border-t md:border-0 bg-(--bg)"
+                        class="absolute w-[stretch] bottom-full left-1/2 lg:static flex flex-col h-0 lg:w-0 duration-300 overflow-hidden border-x border-t lg:border-0 bg-(--bg)"
                     >
                         <a
                             href="/digital/Ezequiel%20Arena%20CV.pdf"
                             target="_blank"
-                            class="ps-2 md:ps-4 my-1 whitespace-nowrap w-fit justify-end md:justify-start"
+                            class="ps-2 lg:ps-4 my-1 whitespace-nowrap w-fit justify-end lg:justify-start"
                             >Version digital</a
                         >
                         <a
                             href="/print/Ezequiel%20Arena%20CV.pdf"
                             target="_blank"
-                            class="ps-2 md:ps-4 whitespace-nowrap w-fit justify-end md:justify-start"
+                            class="ps-2 lg:ps-4 whitespace-nowrap w-fit justify-end lg:justify-start"
                             >Version imprimir</a
                         >
                     </div>
+                </div>
+                <div id="intro" class="flex items-center cursor-pointer">
+                    <div
+                        class="flex items-center justify-center min-w-[2.5rem]"
+                    >
+                        <Icon
+                            id="on"
+                            name="line-md:pause-to-play-filled-transition"
+                            class="w-5 h-6 text-center duration-500"
+                        />
+                        <Icon
+                            id="off"
+                            name="line-md:play-off-filled"
+                            class="w-5 h-6 text-center opacity-0 duration-500"
+                        />
+                    </div>
+                    <p
+                        class="duration-500 hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:group-hover:w-[var(--max-width)]"
+                    >
+                        Saltar intro
+                    </p>
                 </div>
                 <div id="mode" class="flex items-center cursor-pointer">
                     <div
@@ -138,7 +156,7 @@ import { Icon } from "astro-icon/components";
                         />
                     </div>
                     <p
-                        class="hidden md:flex text-[14px] whitespace-nowrap overflow-hidden md:opacity-0 md:group-hover:opacity-100 md:group-hover:w-[var(--max-width)]"
+                        class="duration-500 hidden lg:flex text-[14px] whitespace-nowrap overflow-hidden lg:group-hover:w-[var(--max-width)]"
                     >
                         Modo claro
                     </p>
@@ -160,6 +178,7 @@ import { Icon } from "astro-icon/components";
     document.addEventListener("DOMContentLoaded", () => {
         const modeBtn = document.querySelector("#mode");
         const textMode = modeBtn?.querySelector("p");
+        const intro = document.querySelector("#intro");
 
         let actualMode: string = document.documentElement.classList.contains(
             "dark",
@@ -175,15 +194,20 @@ import { Icon } from "astro-icon/components";
         const applyTheme = (theme: string) => {
             if (theme === "dark") {
                 document.documentElement.classList.add("dark");
-                if (textMode) {
-                    textMode.innerText = "Modo claro";
-                }
             } else {
                 document.documentElement.classList.remove("dark");
-                if (textMode) {
-                    textMode.innerText = "Modo oscuro";
-                }
             }
+
+            if (textMode) {
+                textMode.classList.add("opacity-0");
+
+                setTimeout(() => {
+                    textMode.innerText =
+                        theme === "dark" ? "Modo claro" : "Modo oscuro";
+                    textMode.classList.remove("opacity-0");
+                }, 500);
+            }
+
             localStorage.setItem("theme", theme);
             actualMode = theme;
         };
@@ -234,15 +258,14 @@ import { Icon } from "astro-icon/components";
         });
 
         wNab.forEach((w) => {
-            w.classList.add("md:w-0", "md:duration-300");
+            w.classList.add("lg:w-0", "lg:duration-300");
 
             w.style.setProperty("--max-width", `${widthMax}px`);
         });
 
         const downloadCv = document.getElementById("downloadCv");
-        const downloadCvRef =
-            document.querySelectorAll<HTMLParagraphElement>("#downloadCv a");
-        const containerCv = document.querySelector("#containerCv p");
+
+        const containerCv = document.querySelector("#containerCv div");
         let openCV = false;
 
         const showCv = (e: MediaQueryListEvent | MediaQueryList) => {
@@ -271,6 +294,72 @@ import { Icon } from "astro-icon/components";
             if (!downloadCv) return;
             openCV = true;
             showCv(mediaQ);
+        });
+
+        const elOn = document.getElementById("on");
+        const elOff = document.getElementById("off");
+        const introText = intro?.querySelector("p");
+
+        const updateUI = (isAnimated: boolean) => {
+            introText?.classList.add("opacity-0");
+
+            if (isAnimated) {
+                elOn?.classList.add("opacity-0");
+                setTimeout(() => {
+                    elOn?.classList.add("hidden");
+                    elOff?.classList.remove("hidden");
+                    if (introText) introText.textContent = "Saltar intro";
+                    requestAnimationFrame(() => {
+                        elOff?.classList.remove("opacity-0");
+                        introText?.classList.remove("opacity-0");
+                    });
+                }, 450);
+            } else {
+                elOff?.classList.add("opacity-0");
+                setTimeout(() => {
+                    elOff?.classList.add("hidden");
+                    elOn?.classList.remove("hidden");
+                    if (introText) introText.textContent = "Ver intro";
+                    requestAnimationFrame(() => {
+                        elOn?.classList.remove("opacity-0");
+                        introText?.classList.remove("opacity-0");
+                    });
+                }, 450);
+            }
+        };
+
+        let isAnimated = window.localStorage.getItem("animation") === "true";
+
+        if (isAnimated) {
+            elOn?.classList.add("hidden", "opacity-0");
+            elOff?.classList.remove("hidden", "opacity-0");
+
+            setTimeout(() => {
+                if (introText) introText.textContent = "Saltar intro";
+                introText?.classList.remove("lg:opacity-0");
+            }, 500);
+        } else {
+            elOff?.classList.add("hidden", "opacity-0");
+            elOn?.classList.remove("hidden", "opacity-0");
+
+            introText?.classList.add("lg:opacity-0");
+
+            setTimeout(() => {
+                if (introText) introText.textContent = "Ver intro";
+                introText?.classList.remove("lg:opacity-0");
+            }, 500);
+        }
+        intro?.addEventListener("click", () => {
+            isAnimated = window.localStorage.getItem("animation") === "true";
+
+            if (isAnimated) {
+                window.localStorage.setItem("animation", "false");
+                updateUI(false);
+            } else {
+                window.localStorage.setItem("animation", "true");
+                window.location.reload();
+                return;
+            }
         });
     });
 </script>

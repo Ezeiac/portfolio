@@ -26,6 +26,7 @@ interface AppNodes {
     hidden: HTMLElement | null;
     aboutMe: HTMLElement | null;
     menu: HTMLElement | null;
+    sect: HTMLElement | null;
     title: HTMLElement | null;
     subtitle: HTMLElement | null;
 }
@@ -63,9 +64,10 @@ export const getNodes = (): AppNodes => ({
     hidden: document.getElementById("hiddenIntro"),
     aboutMe: document.getElementById("aboutMe"),
     menu: document.getElementById("menu"),
+    sect: document.getElementById("sect"),
     
     title: document.getElementById("title"),
     subtitle: document.getElementById("subtitle"),
 })
 
-export const mediaQ = window.matchMedia("(max-width:768px)")
+export const mediaQ = window.matchMedia("(max-width:1024px)")

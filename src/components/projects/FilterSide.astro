@@ -20,37 +20,41 @@ const norepeatSkills = [
 ];
 ---
 
-<div class="md:w-1/5 sticky md:static bottom-4 md:bottom-auto relative z-10">
+<div class="lg:w-1/5 sticky lg:static bottom-4 lg:bottom-auto relative z-10">
     <div
-        class="flex flex-col md:sticky bottom-0 md:top-4 md:bottom-auto md:overflow-y-auto pb-8 items-end boxSkills"
+        class="flex flex-col lg:sticky bottom-0 lg:top-4 lg:bottom-auto lg:overflow-y-auto pb-8 items-end boxSkills"
     >
         <div
             id="tagsFilter"
-            class="h-fit w-fit duration-300 md:bg-transparent z-70 relative"
+            class="h-fit w-fit md:w-full duration-300 lg:bg-transparent z-70 relative"
         >
             <div
                 id="hideFilters"
-                class="flex w-fit md:bg-transparent right-0 border border-b-0 md:border-none justify-self-end"
+                class="flex w-fit bg-transparent right-0 border border-b-0 lg:border-none justify-self-end lg:justify-self-start"
             >
-                <p class="font-bold mx-2 md:mx-0 bg-(--bg)">Filtrar por</p>
-                <Icon
-                    name="lucide:chevron-down"
-                    class="h-6 w-auto justify-self-center md:hidden cursor-pointer rotate-180 duration-500"
-                />
+                <div class="relative flex">
+                    <div id="filterBgText" class="lg:hidden"></div>
+                    <p class="font-bold mx-2 lg:mx-0">Filtrar por</p>
+                    <Icon
+                        name="lucide:chevron-down"
+                        class="h-6 w-auto justify-self-center lg:hidden cursor-pointer rotate-180 duration-500"
+                    />
+                </div>
             </div>
 
             <div
                 id="containerFilters"
-                class="grid grid-rows-[0fr] lg:grid-rows-[1fr] overflow-hidden lg:overflow-auto border-t md:border-none md:bg-transparent transition-[grid-template-rows] duration-500 ease-in-out"
+                class="relative grid grid-rows-[0fr] lg:grid-rows-[1fr] overflow-hidden lg:overflow-auto border-t lg:border-none bg-transparent transition-[grid-template-rows] duration-500 ease-in-out"
             >
+                <div id="filterBg" class="lg:hidden top-6"></div>
                 <div class="min-h-0 w-full">
                     <div
-                        class="flex flex-col overflow-x-auto md:overflow-visible"
+                        class="flex flex-col overflow-x-auto lg:overflow-visible my-1"
                     >
                         {
                             listSkills.map((s) => (
-                                <div class="md:pb-[10%]">
-                                    <p class="hidden md:block mb-2 text-sm">
+                                <div class="lg:pb-[10%]">
+                                    <p class="hidden lg:block mb-2 text-sm">
                                         {s.category}
                                     </p>
                                     <div class="flex flex-wrap">
@@ -82,13 +86,13 @@ const norepeatSkills = [
                     </div>
 
                     <div
-                        class="flex flex-row md:flex-col justify-around mt-4 md:mt-6 pb-4 md:pb-0"
+                        class="flex flex-row lg:flex-col justify-between mt-4 lg:mt-6 pb-4 lg:pb-0 px-2"
                     >
                         <div id="typeFilter" class="flex flex-col">
                             <p class="mb-3 text-xs font-semibold">
                                 Tipo de coincidencia
                             </p>
-                            <div class="flex md:mb-4">
+                            <div class="flex lg:mb-4">
                                 <a
                                     id="softFilter"
                                     data-typefilter="softFilter"
@@ -108,11 +112,11 @@ const norepeatSkills = [
 
                         <a
                             id="clearfilters"
-                            class="flex self-end invisible md:self-start md:mt-auto flex-shrink-0 duration-1000 px-[6px] cursor-pointer items-center text-red-500 mb-[2px]"
+                            class="flex self-end invisible lg:self-start lg:mt-auto flex-shrink-0 duration-1000 px-[6px] cursor-pointer items-center text-red-500 mb-[2px]"
                         >
                             <Icon
                                 name="lucide:filter-x"
-                                class="h-5 md:mx-1 w-auto self-center"
+                                class="h-5 lg:mx-1 w-auto self-center"
                             />
                             <p class="block">Borrar filtros</p>
                         </a>

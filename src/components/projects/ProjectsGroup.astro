@@ -32,8 +32,8 @@ const isCarouselStyle = typesSameTechs.includes(project.type);
                                     data-destacado-index={i}
                                     class={
                                         i === 0
-                                            ? "block duration-800 w-full"
-                                            : "hidden duration-800 w-full"
+                                            ? "block duration-[800ms] w-full"
+                                            : "hidden duration-[800ms] w-full"
                                     }
                                 >
                                     <ImgProjects
@@ -69,9 +69,9 @@ const isCarouselStyle = typesSameTechs.includes(project.type);
                 <div class="mb-4 border-b pb-2">
                     <h3>{project.category}</h3>
                 </div>
-                <div class="flex flex-wrap w-full justify-center md:justify-start">
+                <div class="flex flex-wrap w-full justify-center lg:justify-start">
                     {project.data.map((t: imagesType, i: number) => (
-                        <div class="md:max-w-[48%] lg:max-w-[31%] max-w-80 mx-[1%] w-full">
+                        <div class="lg:max-w-[48%] lg:max-w-[31%] max-w-80 mx-[1%] w-full">
                             <ImgProjects
                                 data={t}
                                 index={i}

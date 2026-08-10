@@ -37,4 +37,10 @@ skills:
         url: "https://api.iconify.design/simple-icons/postman.svg",
         fav: false
     }
+    - { 
+        name: "Playwright",
+        repo: "simple-icons:playwright",
+        url: "https://api.iconify.design/simple-icons/playwright.svg",
+        fav: false
+    }
 ---
