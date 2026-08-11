@@ -249,7 +249,7 @@ p {
     height: 100dvh;
     transform-origin: center;
     left: 30px;
-    top: calc(50% + 88px);
+    top: calc(50% + 108px);
     right: unset;
     bottom: unset;
     will-change: transform, opacity;
